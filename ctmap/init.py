@@ -1,7 +1,7 @@
 import os
 
 idir = os.path.join("img", "map")
-dirs = [idir, os.path.join("js", "kinds"), "scrapers"]
+dirs = [idir, os.path.join("js", "kinds"), "scrapers", os.path.join("scrapers", "data")]
 copies = {
 	"css": ["custom.css"]
 }
