@@ -24,7 +24,7 @@ map.live.Controller = CT.Class({
 		},
 		clip: function(name) {
 			var u = this._.url;
-			return CT.dom.img("/img/clip.png", null, function() {
+			return CT.dom.img("/img/map/live/clip.png", null, function() {
 				u(name);
 			});
 		}

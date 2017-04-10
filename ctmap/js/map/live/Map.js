@@ -15,9 +15,9 @@ map.live.Map = CT.Class({
 						icon = (color == "green") ? "default" : "red";
 					else
 						icon = color + "_arrow";
-					img = CT.dom.img("/img/objective/" + icon + ".png", null, function() {
+					img = CT.dom.img("/img/map/live/objective/" + icon + ".png", null, function() {
 						var dropper = thaz._.buttons.objective;
-						dropper.src = "/img/objective/" + icon + ".png";
+						dropper.src = "/img/map/live/objective/" + icon + ".png";
 						CT.trans.rotate(dropper, { degrees: rot });
 						thaz.objective(icon, rot);
 						modal.hide();
@@ -57,7 +57,7 @@ map.live.Map = CT.Class({
 					anchor: anchor,
 					parent: this.opts.node,
 					content: map.live.core._[channel + "z"].map(function(s) {
-						var ilnk = "/img/" + channel + "/" + s + ".png";
+						var ilnk = "/img/map/live/" + channel + "/" + s + ".png";
 						return CT.dom.img(ilnk, "hoverglow roundest block", function() {
 							if (channel == "scout") {
 								CT.dom.hide(bz.scout);
@@ -122,7 +122,7 @@ map.live.Map = CT.Class({
 		if (msg.action == "panic") {
 			pnode = pz[msg.data.key] = _.map.getMarker(msg.data.key);
 			pnode._normal = pnode.getIcon();
-			pnode.setIcon("/img/scout/panic.png");
+			pnode.setIcon("/img/map/live/scout/panic.png");
 		} else if (msg.action == "unpanic") {
 			pz[msg.data.key].setIcon(pz[msg.data.key]._normal);
 			delete pz[msg.data.key];
@@ -138,7 +138,7 @@ map.live.Map = CT.Class({
 				key: key,
 				optimized: false,
 				icon: {
-					url: "/img/" + channel + (msg.data.icon ? ("/" + msg.data.icon) : "") + ".png",
+					url: "/img/map/live/" + channel + (msg.data.icon ? ("/" + msg.data.icon) : "") + ".png",
 					size: new google.maps.Size(mdim, mdim)
 				},
 				position: msg.data.position,
@@ -152,7 +152,7 @@ map.live.Map = CT.Class({
 			};
 			if (channel == "scout") {
 				mopts.infoDelay = 500;
-				mopts.info = CT.dom.div([CT.dom.img("/img/zap.png", "pointer hoverglow", function() {
+				mopts.info = CT.dom.div([CT.dom.img("/img/map/live/zap.png", "pointer hoverglow", function() {
 					if (!pz[msg.data.key])
 						_.remove(data.channel, key);
 					CT.pubsub.pm(data.user, "zap");
@@ -193,7 +193,7 @@ map.live.Map = CT.Class({
 				iteration += 1;
 				if (iteration < p.iterations) {
 					img = (iteration % 2) ? "default" : "panic";
-					marker.setIcon("/img/scout/" + img + ".png");
+					marker.setIcon("/img/map/live/scout/" + img + ".png");
 					setTimeout(flash, p.interval);
 				} else
 					_.map.removeMarker(key);
@@ -261,28 +261,28 @@ map.live.Map = CT.Class({
 		this._.buttons.scout = CT.dom.img({
 			noanchor: true,
 			onclick: this.selectScout,
-			src: "/img/scout/default.png",
+			src: "/img/map/live/scout/default.png",
 			imgid: name + "scout",
 			imgclass: "hoverglow roundest"
 		});
 		this._.buttons.objective = CT.dom.img({
 			noanchor: true,
 			onclick: this.selectObjective,
-			src: "/img/objective/default.png",
+			src: "/img/map/live/objective/default.png",
 			imgid: name + "objective",
 			imgclass: "hoverglow roundest hidden"
 		});
 		this._.buttons.obstacle = CT.dom.img({
 			noanchor: true,
 			onclick: this.selectObstacle,
-			src: "/img/obstacle/default.png",
+			src: "/img/map/live/obstacle/default.png",
 			imgid: name + "obstacle",
 			imgclass: "hoverglow roundest hidden"
 		});
 		this._.buttons.peep = CT.dom.img({
 			noanchor: true,
 			onclick: this.peep,
-			src: "/img/peep.png",
+			src: "/img/map/live/peep.png",
 			imgid: name + "peep",
 			imgclass: "hoverglow roundest hidden"
 		});
