@@ -5,9 +5,9 @@ map.live.core = {
 		zoom: 18,
 		interval: 5000,
 		resolution: 1000,
-		scoutz: ["default", "hat", "caduceus", "mic", "clown", "hood"],
-		obstaclez: ["default", "dude", "dudes", "bike", "car", "armor"],
-		objectivez: ["default", "red", "beatdown"],
+		scoutz: core.config.ctmap.live.scouts,
+		obstaclez: core.config.ctmap.live.obstacles,
+		objectivez: core.config.ctmap.live.objectives,
 		pulse: {
 			interval: 1000,
 			iterations: 10
@@ -69,5 +69,3 @@ map.live.core = {
 		_rot();
 	}
 };
-
-CT.log.grep(core.config.log.include, core.config.log.exclude);
