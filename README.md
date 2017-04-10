@@ -45,5 +45,10 @@ This package includes the necessary ingredients for building map-centric website
     	"center": { "lat": 37.75, "lng": -122.45 },
     	"queries": [{ "modelName": "building" }],
     	"custom_kinds": [],
-    	"geokeys": []
+    	"geokeys": [],
+    	"live": {
+    		"scouts": ["default"],
+    		"obstacles": ["default"],
+    		"objectives": ["default", "red"]
+    	}
     }
