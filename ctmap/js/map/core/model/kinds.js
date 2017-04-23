@@ -92,7 +92,7 @@ map.core.model.kinds.BuildingBase = CT.Class({
 			for (var i = 0; i < this._icons.length; i++) {
 				var icon = this._icons[i];
 				if (d.building_type.indexOf(icon) != -1)
-					return "/img/" + icon.toLowerCase().replace(" ", "-") + ".png";
+					return "/img/map/" + icon.toLowerCase().replace(" ", "-") + ".png";
 			}
 		}
 	}
