@@ -4,7 +4,7 @@ map.live.Controller = CT.Class({
 		maps: {},
 		tickers: [],
 		tick: function() {
-			var latlng, map, _ = this._;
+			var latlng, _ = this._;
 			navigator.geolocation.getCurrentPosition(function(pos) {
 				if (!_.position || map.live.core.diff(_.position, pos)) {
 					_.position = pos;
@@ -29,12 +29,12 @@ map.live.Controller = CT.Class({
 			});
 		}
 	},
-	tick: function(map) {
+	tick: function(theMap) {
 		if (this._.tickers.length)
 			this._.position = null; // forces next tick
 		else
 			setInterval(this._.tick, map.live.core._.interval);
-		this._.tickers.push(map);
+		this._.tickers.push(theMap);
 	},
 	pm: function(msg) {
 		// for now you can only zap people

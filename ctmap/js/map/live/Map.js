@@ -131,7 +131,7 @@ map.live.Map = CT.Class({
 		} else if (msg.action == "move") {
 			_.map.setMarker(msg.data);
 			if (msg.data.rotation)
-				core.util.rotate(_.map.getMarker(msg.data.key).getIcon(), msg.data.rotation);
+				map.live.core.rotate(_.map.getMarker(msg.data.key).getIcon(), msg.data.rotation);
 		} else if (msg.action == "add") {
 			mdim = CT.align.height() * 14 / 100;
 			mopts = {

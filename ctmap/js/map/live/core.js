@@ -54,7 +54,7 @@ map.live.core = {
 	rotate: function(icon, degz) {
 		var count = map.live.core._.rotation.retry;
 		var _rot = function() { // node may not yet be present... (improve)
-			var n = CT.dom.attr("src", icon, true);
+			var n = CT.dom.attr("src", icon.url || icon, true);
 			if (n) {
 				CT.trans.rotate(n, {
 					degrees: degz,
