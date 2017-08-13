@@ -52,7 +52,7 @@ map.live.Controller = CT.Class({
 	},
 	join: function(name) {
 		CT.trans.translate("parties", { x: -155 });
-		var map = this._.maps[name] = new map.live.Map({
+		this._.maps[name] = new map.live.Map({
 			name: name,
 			controller: this,
 			node: this.slider.add(name, true)
