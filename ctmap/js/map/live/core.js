@@ -1,10 +1,10 @@
 map.live.core = {
 	_: {
 		host: location.hostname,
-		port: 8888,
-		zoom: 18,
-		interval: 5000,
-		resolution: 1000,
+		port: core.config.ctmap.live.port,
+		zoom: core.config.ctmap.live.zoom,
+		interval: core.config.ctmap.live.interval,
+		resolution: core.config.ctmap.live.resolution,
 		scoutz: core.config.ctmap.live.scouts,
 		obstaclez: core.config.ctmap.live.obstacles,
 		objectivez: core.config.ctmap.live.objectives,

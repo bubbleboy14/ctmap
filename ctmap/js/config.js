@@ -6,6 +6,10 @@
 	"custom_kinds": [],
 	"geokeys": [],
 	"live": {
+		"port": 8888,
+		"zoom": 18,
+		"interval": 5000,
+		"resolution": 1000,
 		"scouts": ["default"],
 		"obstacles": ["default"],
 		"objectives": ["default", "red"]
