@@ -1,16 +1,18 @@
 from cantools import db
 
-class Building(db.ModelBase):
+class Place(db.TimeStampedBase):
     latitude = db.Float()
     longitude = db.Float()
+    address = db.String()
+    zipcode = db.ForeignKey(kind="zipcode")
+    label = "address"
+
+class Building(Place):
     year = db.Integer()
     building_id = db.String()
     building_type = db.String()
-    address = db.String()
-    zipcode = db.ForeignKey(kind="zipcode")
     owner = db.ForeignKey(kind="owner")
     rent_control = db.Boolean()
-    label = "address"
 
 def data2building(data):
     from cantools.geo import address2latlng, addr2zip
@@ -56,9 +58,6 @@ class ZipCode(db.ModelBase):
         return "%s, %s, %s"%(self.city, self.state, self.code)
 
 def getzip(code):
-    if len(code) < 5:
-        from cantools.util import error
-        error("invalid zip code: %s"%(code,))
     try:
         code = str(int(code.strip()[:5]))
         while len(code) < 5: # preceding 0's
