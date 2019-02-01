@@ -154,5 +154,5 @@ map.core.model.kinds.BReffer = CT.Class({
 }, map.core.model.kinds.BuildingBase);
 
 core.config.ctmap.custom_kinds.forEach(function(k) {
-	CT.require("kinds." + k, true);
+	map.core.model.kinds[k] = CT.require("kinds." + k, true);
 });
