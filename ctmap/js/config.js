@@ -1,8 +1,8 @@
 {
 	"city": "san francisco",
-	"types": ["building"],
+	"types": ["place"],
 	"center": { "lat": 37.75, "lng": -122.45 },
-	"queries": [{ "modelName": "building" }],
+	"queries": [{ "modelName": "place" }],
 	"custom_kinds": [],
 	"geokeys": [],
 	"live": {
