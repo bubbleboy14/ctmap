@@ -1,6 +1,7 @@
 {
 	"city": "san francisco",
 	"types": ["place"],
+	"zoom": 12,
 	"center": { "lat": 37.75, "lng": -122.45 },
 	"queries": [{ "modelName": "place" }],
 	"custom_kinds": [],

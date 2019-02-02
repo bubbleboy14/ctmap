@@ -18,7 +18,8 @@ map.core.controller = {
 		}
 		map.core.controller.map = new CT.map.Map({
 			node: map.core.controller.nodes.map,
-			center: core.config.ctmap.center
+			center: core.config.ctmap.center,
+			zoom: core.config.ctmap.zoom
 		});
 		map.core.query.init();
 	}
