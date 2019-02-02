@@ -63,12 +63,12 @@ map.core.model.kinds.Base = CT.Class({
 	}
 });
 
-map.core.model.kinds.BuildingBase = CT.Class({
-	CLASSNAME: "map.core.model.kinds.BuildingBase",
+map.core.model.kinds.Place = CT.Class({
+	CLASSNAME: "map.core.model.kinds.Place",
 	process: function(d) {
 		return {
 			key: d.key,
-			address: d.address + ", " + core.config.ctmap.city,
+			address: this.address(d),
 			position: {
 				lng: d.longitude,
 				lat: d.latitude
@@ -76,6 +76,22 @@ map.core.model.kinds.BuildingBase = CT.Class({
 			info: this.info(d),
 			icon: this.icon(d)
 		};
+	},
+	address: function(d) {
+		return d.address;
+	},
+	info: function(d) {
+		return d.name || d.title || d.info || d.description || d.blurb || d.address;
+	},
+	icon: function(d) {
+		return "/img/map/office.png";
+	}
+}, map.core.model.kinds.Base);
+
+map.core.model.kinds.BuildingBase = CT.Class({
+	CLASSNAME: "map.core.model.kinds.BuildingBase",
+	address: function(d) {
+		return d.address + ", " + core.config.ctmap.city;
 	},
 	info: function(d) {
 		return CT.dom.node([
@@ -96,7 +112,7 @@ map.core.model.kinds.BuildingBase = CT.Class({
 			}
 		}
 	}
-}, map.core.model.kinds.Base);
+}, map.core.model.kinds.Place);
 
 map.core.model.kinds.Building = CT.Class({
 	CLASSNAME: "map.core.model.kinds.Building",
@@ -138,5 +154,5 @@ map.core.model.kinds.BReffer = CT.Class({
 }, map.core.model.kinds.BuildingBase);
 
 core.config.ctmap.custom_kinds.forEach(function(k) {
-	CT.require("kinds." + k, true);
+	map.core.model.kinds[k] = CT.require("kinds." + k, true);
 });
