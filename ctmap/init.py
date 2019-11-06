@@ -28,3 +28,6 @@ model = {
 routes = {
 	"/_scrape": "_scrape.py"
 }
+cfg = {
+	"zipdomain": "https://api.mkult.co"
+}
