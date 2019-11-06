@@ -69,7 +69,11 @@ def getzip(code):
     if not zipcode:
         from cantools import config
         from cantools.web import fetch
-        city, state, county = fetch(config.map.zipdomain, path="/%s"%(code,), asjson=True)
+        if config.map:
+            city, state, county = fetch(config.map.zipdomain, path="/%s"%(code,), asjson=True)
+        else: # use mkpi-style ctmap.zipdomain
+            city, state, county = fetch("%s/geo?action=zip&code=%s"%(config.ctmap.zipdomain,
+                code), ctjson=True)
         zipcode = ZipCode(code=code, city=city, state=state, county=county)
         zipcode.put()
     return zipcode
