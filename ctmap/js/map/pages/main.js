@@ -4,7 +4,7 @@ CT.setVal("mapkey", CT.data.choice(core.config.ctmap.geokeys));
 CT.require("CT.map", true);
 CT.require("map.core");
 CT.map.util.setGeoKeys(core.config.ctmap.geokeys);
-CT.net.setCache(true);
+CT.net.setCache(core.config.ctmap.netcache);
 CT.net.setSpinner(true);
 CT.map.useSingleInfoWindow();
 

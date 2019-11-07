@@ -6,6 +6,7 @@
 	"queries": [{ "modelName": "place" }],
 	"custom_kinds": [],
 	"geokeys": [],
+	"netcache": true,
 	"icons": ["business", "commercial", "house",
 		"industrial", "office", "one-family", "residential"],
 	"live": {
