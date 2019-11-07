@@ -6,6 +6,8 @@
 	"queries": [{ "modelName": "place" }],
 	"custom_kinds": [],
 	"geokeys": [],
+	"icons": ["business", "commercial", "house",
+		"industrial", "office", "one-family", "residential"],
 	"live": {
 		"port": 8888,
 		"zoom": 18,
