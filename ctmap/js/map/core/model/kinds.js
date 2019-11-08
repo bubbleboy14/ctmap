@@ -84,7 +84,7 @@ map.core.model.kinds.Place = CT.Class({
 		return d.name || d.title || d.info || d.description || d.blurb || d.address;
 	},
 	icon: function(d) {
-		return "/img/map/office.png";
+		return d.icon || "/img/map/office.png";
 	}
 }, map.core.model.kinds.Base);
 
