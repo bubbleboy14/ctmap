@@ -7,6 +7,7 @@
 	"custom_kinds": [],
 	"geokeys": [],
 	"netcache": true,
+	"header": true,
 	"icons": ["business", "commercial", "house",
 		"industrial", "office", "one-family", "residential"],
 	"live": {
