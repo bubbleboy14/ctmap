@@ -34,6 +34,9 @@ This package includes the necessary ingredients for building map-centric website
     routes = {
     	"/_scrape": "_scrape.py"
     }
+    cfg = {
+    	"zipdomain": "https://api.mkult.co"
+    }
 
 # Front (JS Config)
 
@@ -41,11 +44,16 @@ This package includes the necessary ingredients for building map-centric website
 ### Import line: 'CT.require("core.config");'
     {
     	"city": "san francisco",
-    	"types": ["building"],
+    	"types": ["place"],
+    	"zoom": 12,
     	"center": { "lat": 37.75, "lng": -122.45 },
-    	"queries": [{ "modelName": "building" }],
+    	"queries": [{ "modelName": "place" }],
     	"custom_kinds": [],
     	"geokeys": [],
+    	"netcache": true,
+    	"header": true,
+    	"icons": ["business", "commercial", "house",
+    		"industrial", "office", "one-family", "residential"],
     	"live": {
     		"port": 8888,
     		"zoom": 18,
