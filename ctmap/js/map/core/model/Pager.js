@@ -7,6 +7,8 @@ map.core.model.Pager = CT.Class({
 		this.markers = map.core.controller.map.addMarkers(mlist);
 	},
 	get: function(rdata, cb) {
+		if (this.opts.keys)
+			return CT.db.multi(this.opts.keys, cb);
 		CT.db.get(this.opts.modelName, this._has_data ? cb : function(d) {
 			if (!this._has_data) {
 				this._has_data = true;
