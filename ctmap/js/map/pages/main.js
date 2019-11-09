@@ -1,10 +1,8 @@
 CT.require("CT.all");
 CT.require("core");
-var cfg = core.config.ctmap;
-CT.setVal("mapkey", CT.data.choice(cfg.geokeys));
-CT.require("CT.map", true);
 CT.require("map.core");
-CT.map.util.setGeoKeys(cfg.geokeys);
+
+var cfg = core.config.ctmap;
 CT.net.setCache(cfg.netcache);
 CT.net.setSpinner(true);
 CT.map.useSingleInfoWindow();

@@ -1,3 +1,5 @@
+CT.require("map.init");
+
 map.live.core = {
 	_: {
 		host: location.hostname,
