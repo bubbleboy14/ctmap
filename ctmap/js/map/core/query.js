@@ -21,8 +21,11 @@ map.core.query = {
 		map.core.controller.nodes.button.onclick = function() {
 			map.core.query.modal.showHide();
 		};
-		for (var sample in core.config.ctmap.queries)
-			map.core.query._build(core.config.ctmap.queries[sample]);
+		var cfg = core.config.ctmap;
+		cfg.queries.forEach(map.core.query._build);
+		cfg.dynqueries && cfg.dynqueries(function(queries) {
+			queries.forEach(map.core.query._build);
+		});
 	},
 	init: function() {
 		CT.db.init({ cb: map.core.query._setup });
