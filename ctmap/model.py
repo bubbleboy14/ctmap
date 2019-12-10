@@ -57,12 +57,14 @@ class ZipCode(db.ModelBase):
     def fullString(self):
         return "%s, %s, %s"%(self.city, self.state, self.code)
 
-def getzip(code):
+def getzip(code, noerror=False):
     try:
         code = str(int(code.strip()[:5]))
         while len(code) < 5: # preceding 0's
             code = '0'+code
     except:
+        if noerror:
+            return
         from cantools.util import error
         error("invalid zip code: %s"%(code,))
     zipcode = ZipCode.query().filter(ZipCode.code == code).get()
