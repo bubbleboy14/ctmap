@@ -18,7 +18,7 @@ copies[obsd] = ["default.png"]
 copies[scod] = ["default.png", "panic.png"]
 syms = {
 	".": ["_scrape.py"],
-	"css": ["map.css", "live.css"],
+	"css": ["map.css", "live.css", "widget.css"],
 	"html": ["map"],
 	"js": ["map"]
 }
