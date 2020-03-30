@@ -10,6 +10,9 @@
 	"header": true,
 	"icons": ["business", "commercial", "house",
 		"industrial", "office", "one-family", "residential"],
+	"widget": {
+		"icon": null
+	},
 	"live": {
 		"port": 8888,
 		"zoom": 18,
