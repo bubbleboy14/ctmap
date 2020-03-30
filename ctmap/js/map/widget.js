@@ -21,7 +21,9 @@ map.widget = {
 		}
 	},
 	build: function(opts) {
-		var _ = map.widget._;
+		var _ = map.widget._,
+			wcfg = core.config.ctmap.widget,
+			wicon = wcfg && wcfg.icon;
 		_.opts = opts;
 		opts.markers.forEach(function(marker) {
 			if (!marker.position && marker.latitude) {
@@ -30,6 +32,8 @@ map.widget = {
 					lng: marker.longitude
 				};
 			}
+			if (wicon)
+				marker.icon = wicon;
 			marker.listeners = {
 				click: _.clicker(marker)
 			};
