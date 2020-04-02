@@ -57,6 +57,10 @@ class ZipCode(db.ModelBase):
     def __str__(self):
         return self.code
 
+    def latlng(self):
+        self.latitude, self.longitude = address2latlng(self.code)
+        self.put()
+
     def fullString(self):
         return "%s, %s, %s"%(self.city, self.state, self.code)
 
@@ -80,8 +84,7 @@ def getzip(code, noerror=False):
         zipcode = ZipCode(code=code, city=city, state=state, county=county)
         zipcode.put()
     if config.ctmap.zip.latlng and not zipcode.latitude:
-        zipcode.latitude, zipcode.longitude = address2latlng(code)
-        zipcode.put()
+        zipcode.latlng()
     return zipcode
 
 def getzips(kwargs):
