@@ -1,4 +1,6 @@
-from cantools import db
+from cantools import db, config
+from cantools.web import fetch
+from cantools.geo import address2latlng, addr2zip
 
 class Place(db.TimeStampedBase):
     latitude = db.Float()
@@ -15,7 +17,6 @@ class Building(Place):
     rent_control = db.Boolean()
 
 def data2building(data):
-    from cantools.geo import address2latlng, addr2zip
     changes = False
     b = None
     if data.get("address"):
@@ -49,6 +50,8 @@ class ZipCode(db.ModelBase):
     city = db.String()
     state = db.String()
     county = db.String()
+    latitude = db.Float()
+    longitude = db.Float()
     label = "code"
 
     def __str__(self):
@@ -69,14 +72,15 @@ def getzip(code, noerror=False):
         error("invalid zip code: %s"%(code,))
     zipcode = ZipCode.query().filter(ZipCode.code == code).get()
     if not zipcode:
-        from cantools import config
-        from cantools.web import fetch
-        if config.map:
+        if config.map: # old configuration style
             city, state, county = fetch(config.map.zipdomain, path="/%s"%(code,), asjson=True)
-        else: # use mkpi-style ctmap.zipdomain
-            city, state, county = fetch("%s/geo?action=zip&code=%s"%(config.ctmap.zipdomain,
+        else: # use mkpi-style ctmap.zip.domain
+            city, state, county = fetch("%s/geo?action=zip&code=%s"%(config.ctmap.zip.domain,
                 code), ctjson=True)
         zipcode = ZipCode(code=code, city=city, state=state, county=county)
+        zipcode.put()
+    if config.ctmap.zip.latlng and not zipcode.latitude:
+        zipcode.latitude, zipcode.longitude = address2latlng(code)
         zipcode.put()
     return zipcode
 
