@@ -1,6 +1,5 @@
 map.widget = {
 	_: {
-		markers: {},
 		receive: function(event) {
 			var d = event.data, _ = map.widget._;
 			_.targetOrigin = event.origin;
@@ -25,6 +24,7 @@ map.widget = {
 			wcfg = core.config.ctmap.widget,
 			wicon = wcfg && wcfg.icon;
 		_.opts = opts;
+		_.markers = {};
 		opts.markers.forEach(function(marker) {
 			if (!marker.position && marker.latitude) {
 				marker.position = {
