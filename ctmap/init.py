@@ -29,5 +29,8 @@ routes = {
 	"/_scrape": "_scrape.py"
 }
 cfg = {
-	"zipdomain": "https://api.mkult.co"
+	"zip": {
+		"latlng": False,
+		"domain": "https://api.mkult.co"
+	}
 }
